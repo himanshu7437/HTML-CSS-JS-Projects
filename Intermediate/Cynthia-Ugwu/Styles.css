@@ -10,11 +10,32 @@ html,body {
     height: 100%;
 }
 
+#minicircle{
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    z-index: 99999;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.bounding{
+    width: fit-content;
+    overflow: hidden;
+}
+
+.bounding .boundinglem {
+    transform: translateY(100%);
+}
+
 #main{
     width: 100%;
+    background-color: black;
 }
 
 #hero{
+    position: relative;
     width: 100%;
     height: 100vh;
     background-color: black;
@@ -45,10 +66,14 @@ html,body {
 }
 
 .blocktext {
+    display: flex ;
+    flex-direction: column;
+    align-items: end;
     width: fit-content;
 }
 
 .blocktext h5{
+    text-transform: uppercase;
     text-align: right;
     font-size: 15px;
 }
@@ -62,6 +87,9 @@ html,body {
 }
 
 #chotiheadings {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     margin-top: 100px;
     padding-right: 50px;
 }
