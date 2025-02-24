@@ -30,13 +30,72 @@ function firstPageAnim() {
     })
 }
 
+var timeout;
 
+function circleSqueezing() {
 
-function miniCircleFollower() {
+    // default scale value 
+    var xscale = 1;
+    var yscale = 1;
+
+    xprev = 0;
+    yprev = 0;
+
+    window.addEventListener("mousemove",function(details) {
+        this.clearTimeout(timeout);
+        xscale = gsap.utils.clamp( 0.8, 1.2, details.clientX - xprev);
+        yscale = gsap.utils.clamp( 0.8, 1.2, details.clientY - yprev);
+
+        xprev = details.clientX;  
+        yprev = details.clientY;  
+
+        miniCircleFollower(xscale, yscale);
+
+        timeout = setTimeout(function () {
+        document.querySelector("#minicircle").style.transform = `translate(${details.clientX}px, ${details.clientY}px) scale(1, 1)`
+            
+        }, 100);
+    })
+}
+
+circleSqueezing();
+
+function miniCircleFollower(xscale, yscale) {
     window.addEventListener('mousemove', function(details) {
-        document.querySelector("#minicircle").style.transform = `translate(${details.clientX}px, ${details.clientY}px)`
+        document.querySelector("#minicircle").style.transform = `translate(${details.clientX}px, ${details.clientY}px) scale(${xscale}, ${yscale})`
     })
 }
 
 miniCircleFollower();
 firstPageAnim();
+
+
+document.querySelectorAll(".elem").forEach(function(elem) {
+
+    var rotate = 0;
+    var diffrot = 0;
+
+    elem.addEventListener("mouseleave", function(details) {
+
+        gsap.to(elem.querySelector("img"), {
+            opacity: 0,
+            ease: Power3,
+            duration: 0.5,
+        });
+    });
+
+    elem.addEventListener("mousemove", function(details) {
+
+        var diff = details.clientY - elem.getBoundingClientRect().top;
+
+        diffrot = details.clientX - rotate;
+        rotate = details.clientX;
+        gsap.to(elem.querySelector("img"), {
+            opacity: 1,
+            ease: Power3,
+            top: diff, 
+            left: details.clientX,
+            rotate: gsap.utils.clamp( -20, 20, diffrot*0.5),
+        });
+    });
+});
