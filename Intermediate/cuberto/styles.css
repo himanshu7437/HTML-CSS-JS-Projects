@@ -10,6 +10,11 @@ html, body {
     height: 100%;
 }
 
+*::selection {
+    background-color: black;
+    color: white;
+}
+
 main {
     width: 100%;
     background-color: white;
@@ -69,10 +74,14 @@ gap: 40px;
 
 #homemain .headings h1 {
     /* color: transparent;
-    -webkit-text-stroke: .001px #000; */
+    -webkit-text-stroke: 1px #000; */
     font-size: 6vw;
     font-weight: 900;
 }
+
+/* #homemain .headings h1:hover {
+    color: black;
+} */
 
 #homelast {
     padding: 2vw 15vw;
@@ -84,10 +93,10 @@ gap: 40px;
     letter-spacing: -.03vw;
 }
 
-#homelast p::selection {
+/* #homelast p::selection {
     background-color: black;
     color: white;
-}
+} */
 
 #featured {
     padding: 10vh 15vw;
@@ -154,16 +163,22 @@ gap: 40px;
 #fright .images {
     width: 90%;
     height: 90%;
-    background-color: yellow;
 }
 
-#btndiv {
+#fright .images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.btndiv {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#btndiv button {
+.btndiv button {
     padding: 1.3vw 2.5vw;
     border-radius: 100px;
     border: 2px solid #e6e6e6;
@@ -171,4 +186,61 @@ gap: 40px;
     font-size: 1vw;
     font-weight: 500;
     letter-spacing: -.1px;
+}
+
+#dev {
+    width: 100%;
+    padding: 5vw 15vw;
+}
+
+#dev h1{
+    font-size: 3.8vw;
+    font-weight: 400;
+    width: 60%;
+    line-height: 1;
+}
+
+#dev p {
+    font-size: 1.5vw;
+    margin-top: 3vw;
+    letter-spacing: -.5px;
+    width: 60%;
+}
+
+#slides {
+    padding: 3vw 10vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slide {
+    width: 30%;
+}
+
+.slide .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide .img {
+    width: 100%;
+    height: 270px;
+    overflow: hidden;
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+.slide .tag {
+    width: fit-content;
+    border-radius: 100px;
+    padding: 10px 22px;
+    background-color: #f7f7f7;
+    margin: 20px 0;
+}
+
+.slide h3 {
+    font-size: 1.4vw;
+    font-weight: 400;
+    letter-spacing: -.5px;
 }
